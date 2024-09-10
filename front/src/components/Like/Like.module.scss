@@ -1,0 +1,12 @@
+.like {
+  width: 4rem;
+  height: 4rem;
+}
+
+.empty {
+  background: url(../../assets/images/heart.svg) no-repeat;
+}
+
+.filled {
+  background: url(../../assets/images/heart-hovered.svg) no-repeat;
+}

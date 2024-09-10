@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import style from "./App.module.scss";
+import Gallery from "./components/Gallery/Gallery";
+import Header from "./components/Header/Header";
+import AuthWindow from "./components/AuthWindow/AuthWindow";
+import { useAuth } from "./contexts/AuthContext";
+import AuthChecker from "./components/AuthChecker/AuthChecker";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const { displayLogin } = useAuth();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <section className={style.app} ref={scrollRef}>
+            <Header />
+            {displayLogin && <AuthWindow />}
+
+            <Routes>
+                <Route path="/" element={<Navigate to="/cats" />} />
+                <Route
+                    path="/cats"
+                    element={<Gallery type={"all"} scrollRef={scrollRef} />}
+                />
+                <Route path="/likes" element={<AuthChecker scrollRef={scrollRef} />} />
+            </Routes>
+        </section>
+    );
 }
 
-export default App
+export default App;

@@ -1,0 +1,19 @@
+@import '../../styles/consts.scss';
+
+.header {
+	width: 100%;
+	height: fit-content;
+
+	color: #ffffff;
+	background-color: $color-primary;
+
+	padding: 0 62px;
+
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	justify-content: space-between;
+}

@@ -1,0 +1,29 @@
+@import './styles/consts.scss';
+
+* {
+	box-sizing: border-box;
+	font: 10px 'Roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	color-scheme: light dark;
+	color: $color-dark;
+	background-color: $color-light;
+	overflow: hidden;
+	max-height: 100vh;
+}
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	border: none;
+}
